@@ -1,6 +1,6 @@
-<h1 align="center">EfficientLLM: Pruning-Aware Pretraining</h1>
+<h1 align="center">Trust Region On-Policy Distillation</h1>
 
-
+<!--
 <p align="center">
     <a href="https://arxiv.org/abs/2502.06663">
             <img alt="Build" src="https://img.shields.io/badge/arXiv%20paper-2502.06663-b31b1b.svg">
@@ -9,29 +9,42 @@
         <img alt="Build" src="https://img.shields.io/badge/HF%20Model-🤗-yellow">
     </a>
 </p>
+-->
 
-This repository contains the training code and models of EfficientLLM introduced in our work: ["EfficientLLM: Scalable Pruning-Aware Pretraining for Architecture-Agnostic Edge Language Models"](https://arxiv.org/abs/2502.06663).
+This repository contains the training code and models of TrOPD introduced in our work: ["Trust Region On-Policy Distillation"](https://arxiv.org/abs/xxx).
 
+<!--
 ## News
 - Feb 10, 2025: 🚀 100M ~ 1B edge models are publicly available on [HuggingFace](https://huggingface.co/collections/xrxing/efficientllm-pruning-aware-pretraining-67a8ecc6a49580b647a6184f).
-
+-->
 
 ## 1. Overview
 
-Modern large language models (LLMs) driven by scaling laws, achieve intelligence emergency in large model sizes. Recently, the increasing concerns about cloud costs, latency and privacy make it an urgent requirement to develop compact edge language models. Distinguished from direct pretraining that bounded by the scaling law, this work proposes the pruning-aware pretraining, focusing on retaining performance of much larger optimized models. It features following characteristics: 1) Data-scalable: we introduce minimal parameter groups in LLM and continuously optimize structural pruning, extending post-training pruning methods like LLM-Pruner and SparseGPT into the pretraining phase. 2) Architecture-agnostic: the LLM architecture is auto-designed using saliency-driven pruning, which is the first time to exceed SoTA human-designed LLMs in modern pretraining. We reveal that it achieves top-quality edge language models, termed EfficientLLM, by scaling up LLM compression and extending its boundary. EfficientLLM significantly outperforms SoTA baselines with 100M ∼ 1B parameters, such as MobileLLM, SmolLM, Qwen2.5-0.5B, OLMo-1B, Llama3.2-1B in common sense benchmarks.
+On-Policy Distillation (OPD) is a fundamental technique for efficient post-training of large language models (LLMs), with broad applications in agent learning, multi-task enhancement, and model compression. However, OPD training becomes unstable when the teacher and student distributions differ substantially, as teacher supervision on student-generated tokens may yield unreliable policy gradients and even cause optimization failure.
+This work addresses reliable on-policy token-level supervision through credit assignment strategies, and proposes Trust Region On-Policy Distillation, TrOPD. 
+It features the following characteristics:
+\textbf{1) Trust-Region On-Policy Learning:} TrOPD performs OPD only in regions where the teacher provides reliable supervision, mitigating the optimization difficulty of the $K_1$ reverse-KL estimator under distribution mismatch. 
+\textbf{2) Outlier Estimation:} For outlier regions, we explore gradient clipping, masking, and forward-KL estimation to reduce the adverse effects of unreliable supervision. 
+\textbf{3) Off-Policy Guidance:} The student continues generation from teacher prefixes and uses forward KL to imitate off-policy guidance, encouraging on-policy exploration toward reliable regions.
+Experiments show that TrOPD consistently outperforms SoTA OPD baselines, including OPD, EOPD, and REOPOLD, across mathematical reasoning, code generation, and general-domain benchmarks.
 
 <div align=center>
-<img width=90% src="https://github.com/Xingrun-Xing2/EfficientLLM/blob/main/imgs/fig2.png"/>
+<img width=90% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f2.pdf"/>
 </div>
 
-**Figure 1**: Pruning-aware pretraining. (a) Training loop includes the joint saliency detection and weight optimizing, pruning type selection from pruning space, and second-order weight updating. (b) Traditional post-training pruning can be embedded in the training loop to scale up. (c) Continuous model size compression in pretraining.
+**Figure 1**: 
+Overview of Trust Region On-Policy Distillation. 
+For the on-policy component, student-generated tokens are divided into the trust region and outliers.
+The student model is further guided by teacher-generated responses.
 
-## 2. Results on Zero-shot Benchmarks
+## 2. Results of OPD Benchmarks
 
 <div align=center>
-<img width=98% src="https://github.com/Xingrun-Xing2/EfficientLLM/blob/main/imgs/table2.PNG"/>
+<img width=98% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f-1.pdf"/>
 </div>
 
+
+<!--
 ## 3. Auto-Designed Architecture
 
 <div align=center>
@@ -51,20 +64,21 @@ tokenizer = AutoTokenizer.from_pretrained("xrxing/EfficientLLM-469M", use_fast=F
 # Load the model
 model = AutoModelForCausalLM.from_pretrained("xrxing/EfficientLLM-469M", trust_remote_code=True, attn_implementation="flash_attention_2")
 ```
+-->
 
-## 5. ToDo List
+## 3. ToDo List
 
 - [x] Release technical report
-- [x] Release Huggingface models
-- [ ] Evaluation code
-- [ ] Pretraining code
+- [ ] Release Huggingface models
+- [ ] Training and evaluation code
 - [ ] Demos and applications
 
 
 ## Contact
 
-Xingrun Xing, CASIA, BAAI (xingxingrun2023@ia.ac.cn)
+Xingrun Xing, Samsung Research, Beijing, China (xingrun.xing@partner.samsung.com)
 
+<!--
 ## Citation
 If you find this work useful for your research, please consider citing:
 ```
@@ -78,4 +92,5 @@ If you find this work useful for your research, please consider citing:
       url={https://arxiv.org/abs/2502.06663}, 
 }
 ```
+-->
 

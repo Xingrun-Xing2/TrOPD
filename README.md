@@ -29,7 +29,7 @@ It features the following characteristics:
 Experiments show that TrOPD consistently outperforms SoTA OPD baselines, including OPD, EOPD, and REOPOLD, across mathematical reasoning, code generation, and general-domain benchmarks.
 
 <div align=center>
-<img width=90% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f2.pdf"/>
+<img width=90% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f2.png"/>
 </div>
 
 **Figure 1**: 
@@ -40,7 +40,7 @@ The student model is further guided by teacher-generated responses.
 ## 2. Results of OPD Benchmarks
 
 <div align=center>
-<img width=98% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f-1.pdf"/>
+<img width=98% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f1-1.PNG"/>
 </div>
 
 

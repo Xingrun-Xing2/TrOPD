@@ -43,6 +43,8 @@ The student model is further guided by teacher-generated responses.
 <img width=98% src="https://github.com/Xingrun-Xing2/TrOPD/blob/main/imgs/f1-1.PNG"/>
 </div>
 
+**Figure 2**: 
+Performance comparison of TrOPD and baselines. The OPD methods, including TrOPD, OPD, and REOPOLD, are trained on Qwen3-SFT-1.7B, which is finetuned from Qwen3-1.7B-Base via supervised finetuning.
 
 <!--
 ## 3. Auto-Designed Architecture

@@ -82,7 +82,7 @@ model = AutoModelForCausalLM.from_pretrained("xrxing/EfficientLLM-469M", trust_r
 
 ## Contact
 
-Xingrun Xing, Samsung Research, Beijing, China (xingrun.xing@partner.samsung.com)
+Xingrun Xing, Samsung Research, Beijing, China (xingxingrun2023@ia.ac.cn, xingrun.xing@partner.samsung.com)
 
 <!--
 ## Citation
